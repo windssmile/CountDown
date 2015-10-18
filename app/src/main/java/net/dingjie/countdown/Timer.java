@@ -26,17 +26,21 @@ public class Timer extends AppCompatActivity {
         getData();
         final MyTimer[] myTimer = {new MyTimer(countDown)};
         myTimer[0].start();
-        Button buttonStop =(Button) findViewById(R.id.Button_stop);
+        final Button buttonStop =(Button) findViewById(R.id.Button_stop);
         buttonStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(remain==0) {
                     remain = myTimer[0].getRestTime();
                     myTimer[0].cancel();
+                    Toast.makeText(Timer.this, R.string.pauseString, Toast.LENGTH_SHORT).show();
+                    buttonStop.setText(R.string.resumeString);
                 } else {
                     myTimer[0] = new MyTimer(remain);
                     myTimer[0].start();
                     remain =0;
+                    Toast.makeText(Timer.this, R.string.resumeString, Toast.LENGTH_SHORT).show();
+                    buttonStop.setText(R.string.pauseString);
                 }
             }
         });

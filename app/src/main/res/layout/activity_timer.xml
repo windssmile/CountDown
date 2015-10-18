@@ -41,7 +41,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/stop"
+        android:text="@string/pauseString"
         android:id="@+id/Button_stop"
         android:layout_below="@+id/linearLayout3"
         android:layout_alignParentLeft="true"
