@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">倒计时器</string>
-    <string name="setup">设置计时器</string>
-    <string name="colon">:</string>
-    <string name="startTimer">启动计时器</string>
-    <string name="setwrong">设定的时间出错了</string>
-    <string name="timeup">时间到</string>
-    <string name="pauseString">暂停倒计时</string>
-    <string name="resumeString">恢复倒计时</string>
+    <string name="app_name">Countdown</string>
+    <string name="setup">Set Countdown</string>
+    <string name="colon" translatable="false">:</string>
+    <string name="startTimer">Start</string>
+    <string name="timeup">Time is up!</string>
+    <string name="resumeString">Resume</string>
+    <string name="pauseString">Pause</string>
+    <string name="setwrong">Invalid Time</string>
 </resources>

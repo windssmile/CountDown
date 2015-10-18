@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">倒计时器</string>
+    <string name="pauseString">暂停倒计时</string>
+    <string name="resumeString">恢复倒计时</string>
+    <string name="setup">设置计时器</string>
+    <string name="setwrong">设定的时间出错了</string>
+    <string name="startTimer">启动计时器</string>
+    <string name="timeup">时间到！</string>
+</resources>
