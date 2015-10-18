@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">倒计时器</string>
+    <string name="setup">设置计时器</string>
+    <string name="colon">:</string>
+    <string name="startTimer">启动计时器</string>
+    <string name="stop">停止/恢复计时</string>
+    <string name="setwrong">设定的时间出错了</string>
+    <string name="timeup">时间到</string>
+</resources>
