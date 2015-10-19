@@ -1,104 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
-
-    <TextView android:text="@string/setup" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:textSize="20dp" android:textColor="#333333"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/editHour"
-        android:maxLength="2"
-        android:text="00" android:textSize="@dimen/num"
-        android:textAlignment="center"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=":"
-        android:id="@+id/colon1"
-        android:textAlignment="inherit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/setup"
+        android:textColor="#333333"
+        android:textSize="20dp" />
 
+    <EditText
+        android:id="@+id/editHour"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:maxLength="2"
+        android:text="00"
+        android:textAlignment="center"
+        android:textSize="@dimen/num" />
+
+    <TextView
+        android:id="@+id/colon1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/editHour"
-        android:layout_toRightOf="@+id/editHour"
         android:layout_toEndOf="@+id/editHour"
+        android:layout_toRightOf="@+id/editHour"
+
+        android:text=":"
+        android:textAlignment="inherit"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/colon"/>
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout"></LinearLayout>
+        android:layout_below="@+id/textView"
+        android:orientation="vertical"></LinearLayout>
 
     <EditText
+        android:id="@+id/editMinute"
         android:layout_width="72dp"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/editMinute"
-        android:text="01"
-        android:textSize="@dimen/num"
-        android:textAlignment="center"
-        android:maxLength="2"
         android:layout_alignTop="@+id/colon1"
+        android:layout_toEndOf="@+id/colon1"
         android:layout_toRightOf="@+id/colon1"
-        android:layout_toEndOf="@+id/colon1" />
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:maxLength="2"
+        android:text="01"
+        android:textAlignment="center"
+        android:textSize="@dimen/num" />
 
     <TextView
+        android:id="@+id/colon2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=":"
-        android:id="@+id/colon2"
-        android:textAlignment="inherit"
-
         android:layout_alignTop="@+id/editMinute"
-        android:layout_toRightOf="@+id/editMinute"
         android:layout_toEndOf="@+id/editMinute"
+        android:layout_toRightOf="@+id/editMinute"
+
+        android:text=":"
+        android:textAlignment="inherit"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/colon"/>
 
     <EditText
+        android:id="@+id/editSecond"
         android:layout_width="72dp"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/editSecond"
-        android:text="00"
-        android:maxLength="2"
-        android:textSize="@dimen/num"
-        android:textAlignment="center"
         android:layout_alignTop="@+id/colon2"
+        android:layout_toEndOf="@+id/colon2"
         android:layout_toRightOf="@+id/colon2"
-        android:layout_toEndOf="@+id/colon2" />
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:maxLength="2"
+        android:text="00"
+        android:textAlignment="center"
+        android:textSize="@dimen/num" />
 
     <Button
+        android:id="@+id/Button_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/startTimer"
-        android:id="@+id/Button_start"
-        android:layout_below="@+id/editHour"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/editSecond"
-        android:layout_alignEnd="@+id/editSecond"
-        android:textSize="20dp"/>
+        android:layout_below="@+id/editHour"
+        android:text="@string/startTimer"
+        android:textSize="20dp" />
 
 </RelativeLayout>
