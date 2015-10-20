@@ -1,6 +1,6 @@
 package net.dingjie.countdown;
 
-import android.app.AlertDialog;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -78,6 +79,10 @@ public class Timer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
+//        //透明状态栏
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        //透明导航栏
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         prepare();
         inter();
@@ -134,7 +139,7 @@ public class Timer extends AppCompatActivity {
         countDown = ((long) bundle.getInt("hour") * 60 * 60 * 1000) + ((long) bundle.getInt("minute") * 60 * 1000) + ((long) bundle.getInt("second") * 1000);
         display = (TextView) findViewById(R.id.textDisplay);
         isExit = new AlertDialog.Builder(this).create();
-        isExit.setTitle(R.string.app_name);
+//        isExit.setTitle(R.string.app_name);
         isExit.setMessage(getString(R.string.exit));
         isExit.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.yes), exitListener);
         isExit.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.no), exitListener);

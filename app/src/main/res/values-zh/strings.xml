@@ -8,7 +8,7 @@
     <string name="startTimer">启动计时器</string>
     <string name="timeup">时间到！</string>
     <string name="exit">终止计时并退出返回？</string>
-    <string name="no">暂时不退出</string>
+    <string name="no">暂不退出</string>
     <string name="yes">退出</string>
     <string name="pausedString">已暂停计时</string>
     <string name="resumedString">已恢复计时</string>
