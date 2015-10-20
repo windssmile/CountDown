@@ -10,4 +10,6 @@
     <string name="exit">Stop and Exit?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="pausedString">Paused</string>
+    <string name="resumedString">Resumed</string>
 </resources>

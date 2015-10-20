@@ -3,8 +3,11 @@ package net.dingjie.countdown;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -16,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Timer extends AppCompatActivity {
+    CoordinatorLayout container;
     private TextView display;
     private Button buttonStop;
     private long countDown;
@@ -43,7 +47,7 @@ public class Timer extends AppCompatActivity {
                 Log.d("OnClickListener", myTimer.toString());
                 myTimer.cancel();
                 Log.d("OnClickListener", myTimer.toString());
-                Toast.makeText(Timer.this, R.string.pauseString, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Timer.this, R.string.pausedString, Toast.LENGTH_SHORT).show();
                 buttonStop.setText(R.string.resumeString);
             } else {
                 Log.d("OnClickListenerBefore", myTimer.toString());
@@ -51,7 +55,7 @@ public class Timer extends AppCompatActivity {
                 Log.d("OnClickListenerAfter", myTimer.toString());
                 myTimer.start();
                 remain = 0;
-                Toast.makeText(Timer.this, R.string.resumeString, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Timer.this, R.string.resumedString, Toast.LENGTH_SHORT).show();
                 buttonStop.setText(R.string.pauseString);
             }
         }
@@ -162,9 +166,10 @@ public class Timer extends AppCompatActivity {
         @Override
         public void onFinish() {
             display.setText("00:00:00.000");
-            Toast.makeText(Timer.this, R.string.timeup, Toast.LENGTH_LONG).show();
-            buttonStop.setText(R.string.timeup);
+            container = (CoordinatorLayout) findViewById(R.id.container);
+            Snackbar.make(container, R.string.timeup, Snackbar.LENGTH_LONG).show();
             buttonStop.setClickable(false);
+            buttonStop.setTextColor(Color.parseColor("#666666"));
         }
     }
 
