@@ -6,10 +6,10 @@
     <string name="setup">设置计时器</string>
     <string name="setwrong">设定的时间出错了</string>
     <string name="startTimer">启动计时器</string>
-    <string name="timeup">时间到！</string>
-    <string name="exit">终止计时并退出返回？</string>
-    <string name="no">暂不退出</string>
-    <string name="yes">退出</string>
+    <string name="timeup">倒计时间到！</string>
+    <string name="exit">返回重新设置？</string>
+    <string name="no">取消</string>
+    <string name="yes">确定</string>
     <string name="pausedString">已暂停计时</string>
     <string name="resumedString">已恢复计时</string>
 </resources>

@@ -7,7 +7,7 @@
     <string name="resumeString">Resume</string>
     <string name="pauseString">Pause</string>
     <string name="setwrong">Invalid Time</string>
-    <string name="exit">Stop and Exit?</string>
+    <string name="exit">Exit now?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="pausedString">Paused</string>

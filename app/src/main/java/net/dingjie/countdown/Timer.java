@@ -1,6 +1,9 @@
 package net.dingjie.countdown;
 
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,7 +13,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.app.NotificationCompat;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,16 +24,10 @@ import android.widget.Toast;
 
 public class Timer extends AppCompatActivity {
     CoordinatorLayout container;
-    private TextView display;
-    private Button buttonStop;
-    private long countDown;
-    private long remain = 0;
-    private MyTimer myTimer;
     DialogInterface.OnClickListener exitListener = new DialogInterface.OnClickListener() {
         public void onClick(DialogInterface dialog, int which) {
             switch (which) {
                 case AlertDialog.BUTTON_POSITIVE:
-                    myTimer.cancel();
                     finish();
                     break;
                 case AlertDialog.BUTTON_NEGATIVE:
@@ -40,20 +37,21 @@ public class Timer extends AppCompatActivity {
             }
         }
     };
+    private TextView display;
+    private Button buttonStop;
+    private long countDown;
+    private long remain = 0;
+    private MyTimer myTimer;
     OnClickListener ocl = new OnClickListener() {
         @Override
         public void onClick(View v) {
             if (remain == 0) {
                 remain = myTimer.getRestTime();
-                Log.d("OnClickListener", myTimer.toString());
                 myTimer.cancel();
-                Log.d("OnClickListener", myTimer.toString());
                 Toast.makeText(Timer.this, R.string.pausedString, Toast.LENGTH_SHORT).show();
                 buttonStop.setText(R.string.resumeString);
             } else {
-                Log.d("OnClickListenerBefore", myTimer.toString());
                 myTimer = new MyTimer(remain);
-                Log.d("OnClickListenerAfter", myTimer.toString());
                 myTimer.start();
                 remain = 0;
                 Toast.makeText(Timer.this, R.string.resumedString, Toast.LENGTH_SHORT).show();
@@ -66,6 +64,9 @@ public class Timer extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (buttonStop.isClickable()) {
+            remain = myTimer.getRestTime();
+            myTimer.cancel();
+            buttonStop.setText(R.string.resumeString);
             isExit.show();
         } else {
             myTimer.cancel();
@@ -92,6 +93,9 @@ public class Timer extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && buttonStop.isClickable()) {
+            remain = myTimer.getRestTime();
+            myTimer.cancel();
+            buttonStop.setText(R.string.resumeString);
             isExit.show();
         } else {
             myTimer.cancel();
@@ -141,6 +145,7 @@ public class Timer extends AppCompatActivity {
         isExit = new AlertDialog.Builder(this).create();
 //        isExit.setTitle(R.string.app_name);
         isExit.setMessage(getString(R.string.exit));
+        isExit.setTitle(getString(R.string.app_name));
         isExit.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.yes), exitListener);
         isExit.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.no), exitListener);
     }
@@ -173,8 +178,27 @@ public class Timer extends AppCompatActivity {
             display.setText("00:00:00.000");
             container = (CoordinatorLayout) findViewById(R.id.container);
             Snackbar.make(container, R.string.timeup, Snackbar.LENGTH_LONG).show();
+            makeNotification(Timer.this);
             buttonStop.setClickable(false);
             buttonStop.setTextColor(Color.parseColor("#666666"));
+        }
+
+        public void makeNotification(Timer timer) {
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            NotificationCompat.Builder nbuilder = new NotificationCompat.Builder(timer);
+            nbuilder.setContentText(getString(R.string.timeup));
+            nbuilder.setContentTitle(getString(R.string.app_name));
+            nbuilder.setTicker(getString(R.string.timeup));
+            nbuilder.setWhen(System.currentTimeMillis());
+            nbuilder.setOngoing(false);
+            nbuilder.setDefaults(Notification.DEFAULT_VIBRATE);
+            nbuilder.setSmallIcon(R.mipmap.ic_launcher);
+            Intent intent = new Intent(Timer.this, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(Timer.this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+            nbuilder.setContentIntent(pendingIntent);
+            Notification notification = nbuilder.build();
+            notification.flags = Notification.FLAG_AUTO_CANCEL;
+            notificationManager.notify(100, notification);
         }
     }
 
